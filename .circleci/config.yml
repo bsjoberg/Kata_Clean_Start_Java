@@ -19,7 +19,6 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - sonarcloud/scan
 
       # Use mvn clean and package as the standard maven build phase
       - run:
@@ -29,6 +28,8 @@ jobs:
       - run:
           name: Test
           command: mvn test
+
+      - sonarcloud/scan
 
 orbs: 
   sonarcloud: sonarsource/sonarcloud@2.0.0
