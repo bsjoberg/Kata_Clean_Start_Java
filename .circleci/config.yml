@@ -2,6 +2,9 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+orbs: 
+  sonarcloud:sonarsource/sonarcloud@1.1.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/jobs-steps/#jobs-overview & https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -19,6 +22,7 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - sonarcloud/scan
 
       # Use mvn clean and package as the standard maven build phase
       - run:
